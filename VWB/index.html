@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Advanced Whiteboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&family=Lato&family=Open+Sans&family=Montserrat&family=Pacifico&family=Dancing+Script&family=Lora&family=Nunito&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+<h2>🔐 Login</h2>
+<input type="text" id="usernameInput" placeholder="Enter username" />
+<button onclick="login()">Login</button>
+<div class="sparkle-container"></div>
+</div>
+
+<!-- WHITEBOARD -->
+<div id="whiteboardScreen" style="display:none;">
+<button id="logoutBtn" onclick="logout()">Logout</button>
+<h2>Welcome, <span id="userLabel"></span></h2>
+
+<div id="toolbar">
+<label>🎨 Color:
+<select id="color">
+<option value="black" selected>Black</option><option value="red">Red</option><option value="blue">Blue</option>
+<option value="green">Green</option><option value="yellow">Yellow</option><option value="purple">Purple</option>
+<option value="pink">Pink</option><option value="orange">Orange</option><option value="brown">Brown</option>
+<option value="gray">Gray</option><option value="cyan">Cyan</option><option value="magenta">Magenta</option>
+<option value="lime">Lime</option><option value="teal">Teal</option><option value="gold">Gold</option>
+</select>
+</label>
+
+<label>✏️ Brush:
+<select id="brush"><option value="2">Small</option><option value="5" selected>Medium</option><option value="10">Large</option></select>
+</label>
+
+<label>🖋 Font:
+<select id="fontFamily">
+  <option value="Poppins" selected>Poppins</option>
+  <option value="Roboto">Roboto</option>
+  <option value="Arial">Arial</option>
+  <option value="Times New Roman">Times New Roman</option>
+  <option value="Verdana">Verdana</option>
+  <option value="Georgia">Georgia</option>
+  <option value="Courier New">Courier New</option>
+  <option value="Consolas">Consolas</option>
+  <option value="Tahoma">Tahoma</option>
+  <option value="Lato">Lato</option>
+  <option value="Open Sans">Open Sans</option>
+  <option value="Montserrat">Montserrat</option>
+  <option value="Pacifico">Pacifico</option>
+  <option value="Dancing Script">Dancing Script</option>
+  <option value="Impact">Impact</option>
+  <option value="Comic Sans MS">Comic Sans MS</option>
+  <option value="Chiller">Chiller</option>
+  <option value="Papyrus">Papyrus</option>
+  <option value="Lora">Lora</option>
+  <option value="Nunito">Nunito</option>
+</select>
+</label>
+<label>🔷 Shapes:
+<select id="shapeSelect" onchange="setTool(this.value)">
+<option value="">Select</option><option value="line">Line</option><option value="rect">Rectangle</option>
+<option value="square">Square</option><option value="circle">Circle</option><option value="triangle">Triangle</option>
+<option value="ellipse">Ellipse</option><option value="diamond">Diamond</option><option value="pentagon">Pentagon</option>
+<option value="hexagon">Hexagon</option><option value="star">Star</option><option value="arrow">Arrow</option>
+</select>
+</label>
+<label>Fill:<input type="checkbox" id="fillShape"/></label>
+
+<button onclick="setTool('pen')">✏️ Pen</button>
+<button onclick="setEraser()">🧽 Eraser</button>
+<button onclick="setTool('text')">📝 Text</button>
+
+<button onclick="undo()">↩️ Undo</button>
+<button onclick="redo()">↪️ Redo</button>
+
+<button onclick="clearBoard()">🗑 Clear</button>
+<button onclick="exportImage()">📷 PNG</button>
+<button onclick="exportPDF()">📄 PDF</button>
+
+<button onclick="newPage()">➕ New</button>
+<button onclick="prevPage()">⬅ Prev</button>
+<button onclick="nextPage()">Next ➡</button>
+<button onclick="deletePage()">❌ Delete</button>
+<span>📑 Page: <span id="pageLabel">1</span></span>
+</div>
+
+<canvas id="whiteboard" width="400" height="500"></canvas>
+<h3>📄 Saved Pages</h3>
+<div id="pageList"></div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+  </html>
