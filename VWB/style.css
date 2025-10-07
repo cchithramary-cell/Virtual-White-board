@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+/* LOGIN SCREEN WITH BACKGROUND IMAGE & OVERLAY */
+#loginScreen {
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    position: relative;
+    color: white;
+    box-shadow: none;
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+    padding: 40px 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#loginScreen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+    border-radius: 0;
+}
+#loginScreen > * {
+    position: relative;
+    z-index: 2;
+}
+#loginScreen input[type="text"] {
+    width: 80%;
+    max-width: 300px;
+    font-size: 1.2rem;
+    padding: 12px 15px;
+    border-radius: 30px;
+    border: none;
+    margin-bottom: 15px;
+    outline: none;
+    box-shadow: 0 0 15px rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+#loginScreen button {
+    width: 80%;
+    max-width: 300px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(135deg,#6a11cb,#2575fc);
+    box-shadow: 0 4px 12px rgba(106,17,203,0.6);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#loginScreen button:hover {
+    box-shadow: 0 6px 20px rgba(106,17,203,0.9);
+    transform: translateY(-2px);
+}
+/* Glitter sparkle container around login */
+#loginScreen .sparkle-container {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 100%;
+    height: 80%;
+    pointer-events: none;
+    overflow: visible;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+/* PAINT TEXTURE BACKGROUND FOR WHITEBOARD */
+#whiteboardScreen {
+    background: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+    padding-bottom: 60px;
+    position: relative;
+}
+/* LOGOUT BUTTON POSITIONED AT BOTTOM CENTER */
+#logoutBtn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    box-shadow: 0 4px 8px rgba(255,102,102,0.9);
+    z-index: 9999;
+}
+/* Other UI styles unchanged */
+#loginScreen,#whiteboardScreen{
+    padding:20px; border-radius:15px;
+    width:95%; max-width:520px; margin:10px; color:#222; box-shadow:0 8px 16px rgba(0,0,0,0.4);
+}
+canvas{
+    background:#fff;border:2px solid #333; touch-action:none; display:block;
+    margin:15px 0;border-radius:10px;width:100%;height:auto;
+}
+#toolbar{
+    display:grid; grid-template-columns: repeat(auto-fit,minmax(80px,1fr));
+    gap:6px; margin-bottom:10px; justify-items:center;
+}
+button,select,input[type=number]{
+    padding:6px 10px; border-radius:8px; border:none; font-weight:600;
+    cursor:pointer; font-family:'Poppins',sans-serif; width:100%;
+    box-sizing:border-box;
+}
+button{
+    background:linear-gradient(135deg,#6a11cb,#2575fc); color:white; box-shadow:0 4px 8px rgba(0,0,0,0.3);
+}
+button:hover{transform:translateY(-2px);}
+select,input[type=number]{background:#eee;color:#222;font-weight:500;}
+#pageList{margin-top:10px;max-height:120px;overflow-y:auto;border-top:2px solid #ddd;padding-top:5px;background:#fafafa;border-radius:8px;}
+.pageItem{display:flex;justify-content:space-between;align-items:center;margin:4px 0;padding:4px 6px;border-radius:6px;background:#f1f1f1;font-size:14px;}
+.pageItem button{background:#ff4e50;padding:4px 8px;font-size:12px;}
+.pageItem button:hover{background:#c31432;}
+
+/* Sparkle animation */
+@keyframes sparkle {
+    0%, 100% {opacity: 0;}
+    50% {opacity: 1; transform: scale(1.2);}
+}
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 4px white);
+    animation: sparkle 2.5s infinite ease-in-out;
+}
+
+/* Shapes and tools styling remain unchanged */
